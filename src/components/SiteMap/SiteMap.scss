@@ -1,0 +1,40 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+
+.site-map {
+    @include flexbox(row, space-between, center);
+    background-color: $ugly-dark-color;
+    border-radius: 1rem;
+    margin: 3rem auto;
+    padding: 1rem 2rem;
+    width: 80vw;
+
+    &__site-box {
+        border-radius: 1rem;
+        height: 10rem;
+        line-height: 10rem;
+        margin: 1rem;
+        text-align: center;
+        width: 20%;
+
+        &--sandbox {
+            background-color: $sandbox-color;
+        }
+
+        &--prompts {
+            background-color: $prompts-color;
+        }
+
+        &--tasks {
+            background-color: $tasks-color;
+        }
+
+        &--evals {
+            background-color: $evals-color;
+        }
+
+        &--about {
+            background-color: $about-color;
+        }
+    }
+}

@@ -1,0 +1,68 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+
+.header {
+    @include flexbox(row, space-between, center);
+    // background-color: lightcyan;
+    // background: rgb(63,94,251);
+    // background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,121,0.6153054971988796) 100%);
+    // background: rgb(2,0,36);
+    // background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,0.9878545168067226) 35%, rgba(8,37,140,1) 44%, rgba(6,90,175,0.9374343487394958) 61%, rgba(4,131,202,0.9038209033613446) 74%, rgba(0,212,255,0.8421962535014006) 100%);
+    background-color: $ugly-dark-color;
+    border-radius: 1rem;
+
+    &__title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin: 2rem 0 2rem 5%;
+    }
+
+    &__login-status {
+        margin-right: 5%;
+    }
+
+    &__emph-text {
+        font-style: italic;
+        font-weight: bold;
+    }
+}
+
+.navbar {
+    &__list {
+        @include flexbox(row, space-between, center);
+        list-style-type: none;
+        padding: 0;
+    }
+
+    &__item {
+        border-radius: 1rem;
+        font-weight: bold;
+        margin: 1rem;
+        padding: 1rem;
+
+        &--home {
+            color: black;
+        }
+
+        &--sandbox {
+            background-color: $sandbox-color;
+        }
+
+        &--prompts {
+            background-color: $prompts-color;
+        }
+
+        &--tasks {
+            background-color: $tasks-color;
+        }
+
+        &--evals {
+            background-color: $evals-color;
+        }
+
+        &--about {
+            background-color: $about-color;
+        }
+    }
+
+}

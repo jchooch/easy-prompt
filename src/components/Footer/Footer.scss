@@ -1,0 +1,13 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+
+.footer {
+    @include flexbox(row, center, center);
+    // background: rgb(2,0,36);
+    // background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,0.9878545168067226) 35%, rgba(8,37,140,1) 44%, rgba(6,90,175,0.9374343487394958) 61%, rgba(4,131,202,0.9038209033613446) 74%, rgba(0,212,255,0.8421962535014006) 100%);
+    background-color: $ugly-dark-color;
+    border-radius: 1rem;
+    bottom: 0;
+    position: absolute;
+    width: 100vw;
+}

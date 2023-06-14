@@ -1,70 +1,169 @@
-# Getting Started with Create React App
+# Joe Choo-Choy's Capstone Project
+# EasyPrompt (V2!)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## TODO LIST
+- [ ] Example TODO
+- [X] Example DONE
 
-## Available Scripts
+### Problem
 
-In the project directory, you can run:
+LLMs hold great promise for assisting and automating knowledge work, but for many tasks a non-trivial aspect of LLM-usage is finding *the right prompt* to draw relevant knowledge out of the LLM. 
 
-### `npm start`
+Since LLMs have usually memorised both correct *and incorrect* patterns of human writing/reasoning during the course of training, they can display common biases, fallacious reasoning, unhelpful discursive patterns, and so on.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Proper prompt engineering can usefully constrain LLM behaviour, allowing for the simulation of particular personalities, communication styles, input-output formats, or patterns of reasoning.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This includes simulation of "non-toxic communication", "diligent reasoning", various kinds of expertise... really any *mode* of reasoning or communication.
 
-### `npm test`
+Since state-of-the-art models can cost hundreds of thousands of dollars to train, prompt engineering allows developers to maximise the insight which can be generated from a given model without further training, espcially when use cases can be specified carefully.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Unfortunately, there are still few tools for easy prompt engineering. This app aims to make prompt engineering easy, trackable, and reproducible.
 
-### `npm run build`
+### User Profile
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Anyone who wishes to use an LLM will enjoy using this app.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The app will be especially useful to those who wish to use an LLM to generate text with a certain format, e.g. code, letters, emails, etc., or for a peculiar purpose requiring complicated instructions, e.g. answering multiple-choice questions, impersonating someone, summarising text, writing abstracts or outlines, etc.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The app could also be useful to prompt engineers or researchers who want to be able to systematically test prompting procedures on different benchmark tests, and save and categorise those prompts.
 
-### `npm run eject`
+Users will create prompt text to be prepended to or wrapped around queries sent to an OpenAI LLM of their choice. Users create this prompt text by creating Prompts, the core construct of this app. The other core constructs of the app are Seqs, Tasks, and Evals. Prompts will be bundled together in re-arrangeable sequences called Seqs, and multiple Seqs for a given Task can be tested in an Eval. Prompts, Seqs, Tasks, and Evals can be managed and categorised for ease of analysis.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Features
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Create, edit and delete Prompts.
+- Generate text from OpenAI LLMs using Prompts.
+- Compose and (re)arrange Prompts into Seqs.
+- Define Tasks by sets of queries.
+- Associate Seqs with Tasks.
+- Evaluate sets of generations for a given Task and Seq.
+- Compare multiple Seqs for a given Task by Eval results.
+- Log in to save or retrieve Prompts, Tasks, and Evals.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Tech Stack
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- React
+- React Router
+- Express
+- Axios
+- OpenAI
+- MySQL
+- Knex
+- ...
 
-## Learn More
+### APIs
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+LLM generations will be produced by requests to the OpenAI API. The user will be able to change the parameters of the request to change the type of LLM, sampling temperature, and more.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The app will also use its own API to read from and write to a database of user information, EasyPrompts, EasyTasks, and so on.
 
-### Code Splitting
+## Implementation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Sitemap
 
-### Analyzing the Bundle Size
+- Homepage
+    - Sitemap
+    - Log-in panel / User information
+- About
+    - Intro to core concepts
+    - How to use the site
+- Sandbox
+- Prompts
+    - Browse and edit Prompts. Compose Prompts into Seqs.
+- Tasks
+    - Browse and edit Tasks.
+- Evals
+    - Evaluate Seqs for a given Task. View Eval results to see the best Seqs.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Mockups
 
-### Making a Progressive Web App
+**TODO**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Endpoints
 
-### Advanced Configuration
+- POST /prompts
+    - Creates a Prompt object and adds it to the stored array of Prompts.
+    - Request: { name, prompt, task, position }
+    - Response: Response: { id, name, prompt, task_id, position, created_at, last_updated_at, created_by }
+    
+- GET /prompts
+    - Gets the stored array of Prompt objects.
+    - Response: [{ id, name, prompt, task, position, created_at, last_updated_at, created_by }, ...]
+    
+- PUT /prompts/:promptID
+    - Update a Prompt's name, prompt, task, or position in the Prompt database.
+    - Request: { name: new_name || prompt: new_prompt || task: new_task || position: new_position }
+    - Response: { id, name, prompt, task_id, position, created_at, last_updated_at, created_by }
+    
+- DELETE /prompts/:promptID
+    - Deletes the Prompt with specified ID.
+    - Response: { id, name, prompt, task_id, position, created_at, last_updated_at, created_by }
+    
+- POST /tasks
+    - Creates a Task object and adds it to the stored array of Tasks.
+    - Request: { name, query }
+    - Response: { id, name, query, created_at, last_updated_at, created_by }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- GET /tasks
+    - Gets the stored array of Task objects.
+    - Response: [{ id, name, query, created_at, last_updated_at, created_by }, ...]
+    
+- PUT /tasks/:taskID
+    - Update a Task's name, prompt, task, or position in the Task database.
+    - Request: { name: new_name || query: new_query }
+    - Response: { id, name, query, created_at, last_updated_at, created_by }
 
-### Deployment
+- DELETE /tasks/:taskID
+    - Deletes the Task with specified ID.
+    - Response: { id, name, query, created_at, last_updated_at, created_by }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+**TODO:**
+- Eval endpoints: ?
+- User endpoints: POST, GET by ID
 
-### `npm run build` fails to minify
+### Database
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- TABLE: Prompts
+    - FIELDS: id (1ary key), name, prompt, task_id (foreign key), position, created_at, last_updated_at, created_by
+- TABLE: Tasks
+    - FIELDS: id (1ary key), name, query, created_at, last_updated_at, created_by
+- TABLE: Evals
+    - FIELDS: **TODO**
+- TABLE: Users
+    - FIELDS: id (1ary key), username, password, role, created_at, last_updated_at
+- JOIN TABLES...?
+
+### Auth
+
+Yes, users will be able to play in the sandbox without logging in but will need to login in order to save Prompts, Tasks, etc. User information will be stored in a database and logins will be authenticated.
+
+## Roadmap
+
+[Wed14th > Fri16th]: Finalise design, create database schemas, create database seed, create basic front-end with all pages and forms, connect OpenAPI API, create API codebase with routes/endpoints. 
+**OVERALL GOAL: GET SANDBOX PAGE WORKING.**
+
+[Fri16th > Mon19th]: Write all B-E Express/Knex functions, write all F-E Axios calls, create log-in functionality sans security, create format to display prompts and tasks.
+**OVERALL GOAL: GET PROMPTS PAGE WORKING.**
+
+[Mon19th > Wed21st]: Link prompts with seqs, queries with tasks, and evals with prompts and tasks; create edit functionality for prompts and tasks.
+**OVERALL GOAL: GET TASKS PAGE WORKING.**
+
+[Wed21st > Fri23rd]: Figure out how to make a couple of charts of evaluation results, add categorisation functionality to prompts and tasks to structure the evals.
+**OVERALL GOAL: GET EVALS PAGE WORKING.**
+
+[Fri23rd > Wed28th]: Complete front-end, authorisation, nice-to-haves, About page, ... 
+**OVERALL GOAL: GET FRONT-END LOOKING GOOD.**
+
+AND MUCH MORE...
+
+## Nice-to-haves
+
+**TODO**
+
+
+
+
+
+
+
+

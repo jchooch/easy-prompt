@@ -1,0 +1,47 @@
+@use "../../styles/partials/mixins" as *;
+
+.login-panel {
+    background-color: lightgray;
+    border-radius: 1rem;
+    margin: 3rem auto;
+    padding: 1rem 2rem;
+    width: 30vw;
+
+    &__title {
+        font-weight: bold;
+    }
+
+    &__form {
+        @include flexbox(column, space-between, left);
+    }
+
+    &__username-input {
+        border: none;
+        border-radius: 1rem;
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    &__password-input {
+        border: none;
+        border-radius: 1rem;
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    &__create-button {
+        border: none;
+        margin: 1rem;
+        // margin: 1rem auto;
+        padding: 1rem;
+        // width: 40%;
+    }
+
+    &__login-button {
+        border: none;
+        margin: 1rem;
+        // margin: 1rem auto;
+        padding: 1rem;
+        // width: 40%;
+    }
+}
