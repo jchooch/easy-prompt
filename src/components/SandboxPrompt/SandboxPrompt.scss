@@ -1,0 +1,88 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+
+.sb-prompt-container {
+    @include flexbox(column, space-between, center);
+    background-color: whitesmoke;
+    border-radius: 1rem;
+    flex-wrap: wrap;
+    margin: 0.5rem;
+    padding: 0.5rem 0;
+    width: 12rem;
+
+    &__label {
+        margin: 0 1rem;
+    }
+
+    &__data {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 0.5rem;
+
+        & .sb-prompt-container__content {
+            visibility: hidden;
+            width: 20rem;
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 1rem;
+            position: absolute;
+            z-index: 1;
+        }
+
+        &:hover .sb-prompt-container__content {
+            visibility: visible;
+        }
+    }
+
+    &__orderbox {
+        @include flexbox(row, space-between, center);
+    }
+
+    &__left-arrow {
+        margin: 0 1rem;
+
+        &:hover {
+            color: blue;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    }
+
+    &__order {
+        margin: 0;
+    }
+
+    &__right-arrow {
+        margin: 0 1rem;
+
+        &:hover {
+            color: blue;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    }
+
+    &__delete-button {
+        margin-top: 0.5rem;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__edit-button {
+        margin-top: 0.5rem;
+        margin-left: 0.5rem;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.sb-prompt-container__content-tooltip:hover
+.sb-prompt-container__content {
+    visibility: visible;
+}

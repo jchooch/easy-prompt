@@ -1,8 +1,10 @@
+@use "../../styles/partials/colors" as *;
 @use "../../styles/partials/mixins" as *;
 
 .login-panel {
-    background-color: lightgray;
+    border: 0.1px solid $black;
     border-radius: 1rem;
+    color: $black;
     margin: 3rem auto;
     padding: 1rem 2rem;
     width: 30vw;
@@ -30,7 +32,7 @@
     }
 
     &__create-button {
-        border: none;
+        border: 0.1px solid $black;
         margin: 1rem;
         // margin: 1rem auto;
         padding: 1rem;
@@ -38,7 +40,7 @@
     }
 
     &__login-button {
-        border: none;
+        border: 0.1px solid $black;
         margin: 1rem;
         // margin: 1rem auto;
         padding: 1rem;

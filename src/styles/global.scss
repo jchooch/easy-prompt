@@ -1,4 +1,6 @@
+@use "./partials/colors" as *;
 @use "./partials/mixins" as *;
+@use "./partials/variables" as *;
 
 * {
     box-sizing: border-box;
@@ -9,10 +11,60 @@ html {
 }
 
 body {
-    background-color: white;
+    // background-color: rgb(2,0,36);
+    // background-image: linear-gradient(to right, #74ebd5, #ACB6E5);
+    // background-image: linear-gradient(to right, #fffbd5, #b20a2c);
+    // background-color: $light-base;
+    background-image: linear-gradient(to right, #ECE9E6, white);
+    // background-image: linear-gradient(to right, #3C3B3F, #605C3C);
+    // background-image: linear-gradient(to right, #00b09b, #96c93d);
+    // background-image: linear-gradient(to right, #D3CCE3, #E9E4F0);
+    // background-image: linear-gradient(to right, #74ebd5, #ACB6E5);
+    color: $black;
     font-size: 1.6rem;
     margin: 1rem;
     min-height: 100vh;
     padding: 0;
     width: 100%;
+}
+
+a {
+    color: $black;
+    text-decoration: none;
+
+    &:hover {
+        font-style: italic;
+        font-weight: bold;
+    }
+}
+
+.emph-italic {
+    font-style: italic;
+}
+
+.emph-bold {
+    font-weight: bold;
+}
+
+.loading-text {
+    @include flexbox(row, center, center);
+    background-color: $black;
+    border-radius: 1rem;
+    color: whitesmoke;
+    height: 10rem;
+    margin: 2rem auto;
+    width: 40%;
+}
+
+.warning-text {
+    @include flexbox(row, center, center);
+    background-color: lightcoral;
+    border-radius: 1rem;
+    height: 10rem;
+    margin: 2rem auto;
+    width: 40%;
+}
+
+.hidden {
+    display: none;
 }

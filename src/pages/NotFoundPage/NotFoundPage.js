@@ -6,7 +6,8 @@
 export default function NotFoundPage() {
     return (
         <>
-            <p>404: Page Not Found! INCLUDE CUSTOM MESSAGE FROM GPT?</p>
+            <p className="warning-text">🚨 404: Page Not Found!🚨 </p>
+            <p className="warning-text">INCLUDE CUSTOM MESSAGE FROM GPT?</p>
         </>
     );
 }

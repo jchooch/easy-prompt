@@ -6,11 +6,11 @@ import SiteMap from "../../components/SiteMap/SiteMap";
 
 // IMPORT STYLES
 
-export default function HomePage() {
-    return (
-        <>
-            <LoginPanel />
-            <SiteMap />
-        </>
-    );
+export default function HomePage({ loginProps }) {
+  return (
+    <>
+      <LoginPanel loginProps={loginProps} />
+      <SiteMap />
+    </>
+  );
 }

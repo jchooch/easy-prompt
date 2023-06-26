@@ -1,0 +1,12 @@
+@use "../../styles/partials/mixins" as *;
+
+.prompts-container {
+    &--empty {
+    }
+
+    &--nonempty {
+        @include flexbox(row, center, center);
+        flex-wrap: wrap;
+        margin-top: 2rem;
+    }
+}

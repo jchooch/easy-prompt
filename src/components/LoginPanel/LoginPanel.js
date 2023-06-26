@@ -1,17 +1,50 @@
+// IMPORT LIBRARIES
+import axios from "axios";
+// IMPORT REACT PAGES
+// IMPORT REACT COMPONENTS
+// IMPORT STYLES
 import "./LoginPanel.scss";
 
-export default function LoginPanel() {
+export default function LoginPanel({ loginProps }) {
 
-    const handleCreateAccount = (event) => {
+    const handleCreateAccount = async (event) => {
         event.preventDefault();
-        console.log("event: ", event);
-        console.log(`Tried to create account with username ${event.target.parentNode.username.value} and password ${event.target.parentNode.password.value}!`);
+        const response = await axios.post(`${process.env.REACT_APP_EASYPROMPT_API_BASE_URL}/users/`, {
+            username: event.target.parentNode.username.value,
+            password: event.target.parentNode.password.value,
+            role: "Engineer"
+        });
+        if (response.data.error = "username_taken") {
+            alert("Username is already taken. Please choose another.");
+        }
     }
 
-    const handleLogin = (event) => {
+    const handleLogin = async (event) => {
         event.preventDefault();
-        console.log("event: ", event);
+        const response = await axios.get(`${process.env.REACT_APP_EASYPROMPT_API_BASE_URL}/users/${event.target.username.value}`);
+        if (response.data.password === event.target.password.value) {
+            loginProps.setLoggedIn(true);
+            sessionStorage.setItem("loggedIn", true);
+            loginProps.setMyUserID(response.data.id);
+            sessionStorage.setItem("myUserID", response.data.id);
+            loginProps.setMyUsername(response.data.username);
+            sessionStorage.setItem("myUsername", response.data.username);
+            loginProps.setMyRole(response.data.role);
+            sessionStorage.setItem("myRole", response.data.role);
+        } else {
+            alert("Password DOES NOT match stored password for that username!");
+        }
         console.log(`Tried to log in with username "${event.target.username.value}" and password "${event.target.password.value}"!`);
+    }
+
+    if (loginProps.loggedIn) {
+        return (
+            <div className="login-panel">
+                <p className="login-panel__title">LOGGED IN</p>
+                <p>Welcome, <b style={{color:"red"}}>{loginProps.myUsername}</b>.</p>
+                <p>You are an <b>{loginProps.myRole}</b>.</p>
+            </div>
+        );
     }
 
     return (

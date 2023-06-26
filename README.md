@@ -5,20 +5,6 @@
 - [ ] Example TODO
 - [X] Example DONE
 
-### Problem
-
-LLMs hold great promise for assisting and automating knowledge work, but for many tasks a non-trivial aspect of LLM-usage is finding *the right prompt* to draw relevant knowledge out of the LLM. 
-
-Since LLMs have usually memorised both correct *and incorrect* patterns of human writing/reasoning during the course of training, they can display common biases, fallacious reasoning, unhelpful discursive patterns, and so on.
-
-Proper prompt engineering can usefully constrain LLM behaviour, allowing for the simulation of particular personalities, communication styles, input-output formats, or patterns of reasoning.
-
-This includes simulation of "non-toxic communication", "diligent reasoning", various kinds of expertise... really any *mode* of reasoning or communication.
-
-Since state-of-the-art models can cost hundreds of thousands of dollars to train, prompt engineering allows developers to maximise the insight which can be generated from a given model without further training, espcially when use cases can be specified carefully.
-
-Unfortunately, there are still few tools for easy prompt engineering. This app aims to make prompt engineering easy, trackable, and reproducible.
-
 ### User Profile
 
 Anyone who wishes to use an LLM will enjoy using this app.

@@ -1,0 +1,118 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+
+$id-width: 5%;
+$label-width: 12%;
+$content-width: 53%;
+$seq-width: 8%;
+$order-width: 9%;
+$delete-width: 6%;
+$edit-width: 7%;
+
+.prompts-table {
+    @include flexbox(column, space-between, center);
+    border: 0.1px solid $prompts-color;
+    font-size: 1.4rem;
+    margin: 2rem auto;
+    width: 80%;
+    
+    &__fields {
+        @include flexbox(row, space-around, center);
+        background-color: $prompts-color;
+        border-bottom: 0.1px solid $prompts-color;
+        width: 100%;
+    }
+
+    &__field {
+        font-weight: bold;
+        margin: 0;
+        padding: 1rem;
+        text-align: center;
+
+        &--id {
+            border-right: 0.1px solid $prompts-color;
+            width: $id-width;
+        }
+
+        &--label {
+            border-right: 0.1px solid $prompts-color;
+            width: $label-width;
+        }
+
+        &--content {
+            border-right: 0.1px solid $prompts-color;
+            width: $content-width;
+        }
+
+        &--seq {
+            border-right: 0.1px solid $prompts-color;
+            width: $seq-width;
+        }
+
+        &--order {
+            border-right: 0.1px solid $prompts-color;
+            width: $order-width;
+        }
+
+        &--delete {
+            width: $delete-width;
+        }
+
+        &--edit {
+            width: $edit-width;
+        }
+    }
+
+    &__row {
+        @include flexbox(row, space-around, center);
+        border-bottom: 0.1px solid $prompts-color;
+        text-align: center;
+        width: 100%;
+    }
+
+    &__col {
+        margin: 0;
+        padding: 1rem;
+
+        &--id {
+            // border-right: 0.1px solid $prompts-color;
+            width: $id-width;
+        }
+
+        &--label {
+            // border-right: 0.1px solid $prompts-color;
+            width: $label-width;
+        }
+
+        &--content {
+            // border-right: 0.1px solid $prompts-color;
+            width: $content-width;
+        }
+
+        &--seq {
+            // border-right: 0.1px solid $prompts-color;
+            width: $seq-width;
+        }
+
+        &--order {
+            // border-right: 0.1px solid $prompts-color;
+            width: $order-width;
+        }
+
+        &--delete {
+            width: $delete-width;
+        }
+
+        &--edit {
+            width: $edit-width;
+        }
+    }
+
+    &__delete-icon {
+        height: 1.5rem;
+    }
+
+    &__edit-icon {
+        height: 1.5rem;
+    }
+}

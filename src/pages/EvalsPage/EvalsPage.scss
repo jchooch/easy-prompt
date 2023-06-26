@@ -1,0 +1,96 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+
+$id-width: 15%;
+$set-width: 32.5%;
+$seq-width: 32.5%;
+$delete-width: 10%;
+$edit-width: 10%;
+
+.evals-table {
+    @include flexbox(column, space-between, center);
+    border: 0.1px solid $evals-color;
+    font-size: 1.4rem;
+    margin: 2rem auto;
+    width: 80%;
+    
+    &__fields {
+        @include flexbox(row, space-around, center);
+        background-color: $evals-color;
+        border-bottom: 0.1px solid $evals-color;
+        width: 100%;
+    }
+
+    &__field {
+        font-weight: bold;
+        margin: 0;
+        padding: 1rem;
+        text-align: center;
+
+        &--id {
+            border-right: 0.1px solid $evals-color;
+            width: $id-width;
+        }
+
+        &--set {
+            border-right: 0.1px solid $evals-color;
+            width: $seq-width;
+        }
+
+        &--seq {
+            border-right: 0.1px solid $evals-color;
+            width: $seq-width;
+        }
+
+        &--delete {
+            width: $delete-width;
+        }
+
+        &--edit {
+            width: $edit-width;
+        }
+    }
+
+    &__row {
+        @include flexbox(row, space-around, center);
+        border-bottom: 0.1px solid $evals-color;
+        text-align: center;
+        width: 100%;
+    }
+
+    &__col {
+        margin: 0;
+        padding: 1rem;
+
+        &--id {
+            // border-right: 0.1px solid $evals-color;
+            width: $id-width;
+        }
+
+        &--set {
+            // border-right: 0.1px solid $evals-color;
+            width: $set-width;
+        }
+
+        &--seq {
+            // border-right: 0.1px solid $evals-color;
+            width: $seq-width;
+        }
+
+        &--delete {
+            width: $delete-width;
+        }
+
+        &--edit {
+            width: $edit-width;
+        }
+    }
+
+    &__delete-icon {
+        height: 1.5rem;
+    }
+
+    &__edit-icon {
+        height: 1.5rem;
+    }
+}

@@ -3,27 +3,56 @@
 
 .header {
     @include flexbox(row, space-between, center);
-    // background-color: lightcyan;
-    // background: rgb(63,94,251);
-    // background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,121,0.6153054971988796) 100%);
-    // background: rgb(2,0,36);
-    // background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,0.9878545168067226) 35%, rgba(8,37,140,1) 44%, rgba(6,90,175,0.9374343487394958) 61%, rgba(4,131,202,0.9038209033613446) 74%, rgba(0,212,255,0.8421962535014006) 100%);
-    background-color: $ugly-dark-color;
+    // background-color: #90D1DD;
+    border: 0.1px solid $black;
     border-radius: 1rem;
+    color: $black;
+
+    &__title-link {
+        color: $black;
+        margin: 2rem 0 2rem 3%;
+
+    }
 
     &__title {
         font-size: 2.5rem;
         font-weight: bold;
-        margin: 2rem 0 2rem 5%;
+        margin: 0;
+
+        &:hover {
+            color: transparent;
+        }
+
+        &:hover .header__title--left {
+            text-shadow: -2px -8px #000;
+        }
+
+        &:hover .header__title--right {
+            text-shadow: 2px 8px #000;
+        }
+    }
+
+    &__login-status-box {
+        @include flexbox(row, space-between, center);
+        margin-right: 3%;
     }
 
     &__login-status {
-        margin-right: 5%;
+        margin-right: 1rem;
     }
 
-    &__emph-text {
-        font-style: italic;
-        font-weight: bold;
+    &__logout-btn {
+        background-color: transparent;
+        border: 0.1px solid red;
+        border-radius: 1rem;
+        color: $black;
+        margin: 0;
+        padding: 0.5rem;
+
+        &:hover {
+            border: 2px solid red;
+            cursor: pointer;
+        }
     }
 }
 
@@ -36,32 +65,36 @@
 
     &__item {
         border-radius: 1rem;
-        font-weight: bold;
+        color: $black;
+        font-weight: normal;
         margin: 1rem;
         padding: 1rem;
 
-        &--home {
-            color: black;
-        }
-
         &--sandbox {
             background-color: $sandbox-color;
+            // background-image: linear-gradient(to right, #ffe259, #ffa751);
+            // background-image: linear-gradient(to right, $blend-color, $sandbox-color);
         }
 
         &--prompts {
             background-color: $prompts-color;
+            // background-image: linear-gradient(to right, #a770ef, #cf8bf3);
+            // background-image: linear-gradient(to right, $blend-color, $prompts-color);
         }
 
         &--tasks {
             background-color: $tasks-color;
+            // background-image: linear-gradient(to right, $blend-color, $tasks-color);
         }
 
         &--evals {
             background-color: $evals-color;
+            // background-image: linear-gradient(to right, $blend-color, $evals-color);
         }
 
         &--about {
             background-color: $about-color;
+            // background-image: linear-gradient(to right, $blend-color, $about-color);
         }
     }
 

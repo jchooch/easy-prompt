@@ -3,7 +3,7 @@
 
 .site-map {
     @include flexbox(row, space-between, center);
-    background-color: $ugly-dark-color;
+    border: 0.1px solid $black;
     border-radius: 1rem;
     margin: 3rem auto;
     padding: 1rem 2rem;
@@ -19,22 +19,27 @@
 
         &--sandbox {
             background-color: $sandbox-color;
+            background-image: linear-gradient(to right, $light-base, $sandbox-color);
         }
 
         &--prompts {
             background-color: $prompts-color;
+            background-image: linear-gradient(to right, $light-base, $prompts-color);
         }
 
         &--tasks {
             background-color: $tasks-color;
+            background-image: linear-gradient(to right, $light-base, $tasks-color);
         }
 
         &--evals {
             background-color: $evals-color;
+            background-image: linear-gradient(to right, $light-base, $evals-color);
         }
 
         &--about {
             background-color: $about-color;
+            background-image: linear-gradient(to right, $light-base, $about-color);
         }
     }
 }

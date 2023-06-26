@@ -1,0 +1,150 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+
+.testbox {
+  @include flexbox(column, space-between, center);
+}
+
+.genbox {
+  background-color: $about-color;
+  border: none;
+  border-radius: 1rem;
+  margin: 2rem auto;
+  padding: 2rem;
+  text-align: center;
+  width: 60%;
+
+  &__form {
+    @include flexbox(column, space-between, center);
+  }
+
+  &__max-tokens-input {
+    border: none;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    width: 30rem;
+  }
+
+  &__temp-input {
+    margin: 0.5rem 0;
+
+    &:focus {
+        outline: none;
+      }
+  
+      &::-webkit-slider-runnable-track {
+          -webkit-appearance: none;
+          background-color: white;
+          border: none;
+          cursor: pointer;
+          height: 0.9rem;
+      }
+  
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        background-color: red;
+        border-radius: 50%;
+        height: 2rem;
+        margin-top: -0.4rem;
+        width: 2rem;
+      }
+  }
+
+  &__temp-label {
+    color: white;
+    margin-top: 0.5rem;
+  }
+
+  &__model-input {
+    border: none;
+    margin: 1rem 0;
+    padding: 0.5rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__eval-label {
+    color: white;
+    margin-left: 2rem;
+  }
+
+  &__promptseq-input {
+    margin: 1rem 1rem 0 0.5rem;
+    padding: 0.5rem;
+  }
+
+  &__taskset-input {
+    margin: 1rem 1rem 0 0.5rem;
+    padding: 0.5rem;
+  }
+
+  &__gen-btn {
+    border: 1px solid red;
+    border-radius: 0.5rem;
+    margin-top: 2rem;
+    padding: 1rem 1.5rem;
+
+    &:hover {
+        cursor: pointer;
+    }
+  }
+}
+
+.ratebox {
+  background-color: $about-color;
+  border: none;
+  border-radius: 1rem;
+  margin: 2rem auto;
+  padding: 2rem;
+  text-align: center;
+  width: 60%;
+
+  &__completion {
+    font-family: "Courier New", monospace;
+    color: white;
+  }
+
+  &__stars {
+    @include flexbox(row, space-evenly, center);
+    color: white;
+    margin: 0 auto;
+    width: 50%;
+  }
+
+  &__star {
+    margin: 0.5rem;
+  }
+
+  &__star-btn {
+    border: none;
+    margin: 0 1rem;
+    width: 2rem;
+  }
+
+  &__star-label {
+    &--1 {
+      color: #ff4136;
+    }
+    &--2 {
+      color: #ff851b;
+    }
+    &--3 {
+      color: #ffdc00;
+    }
+    &--4 {
+      color: #2ecc40;
+    }
+    &--5 {
+      color: #2ecc40;
+    }
+  }
+
+  &__rate-btn {
+    border: none;
+    border-radius: 1rem;
+    margin-left: 4rem;
+    padding: 0.5rem 1rem;
+  }
+}
